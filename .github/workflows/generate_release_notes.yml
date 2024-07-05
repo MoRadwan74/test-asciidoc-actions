@@ -23,5 +23,10 @@ jobs:
       - name: Print values for debugging
         run: |
           echo "Workflow conclusion: ${{ github.event.workflow_run.conclusion }}"
-          echo "Skip check: ${{ github.event.workflow_run.outputs['release-notes-updating'].outputs.skip-check }}"
-          echo "Docs changed: ${{ github.event.workflow_run.outputs['release-notes-updating'].outputs.docs-changed }}"
+          echo "Outputs: ${{ toJson(github.event.workflow_run.outputs) }}"
+          echo "Skip check: ${{ github.event.workflow_run.outputs['release-notes-updating'].skip-check }}"
+          echo "Docs changed: ${{ github.event.workflow_run.outputs['release-notes-updating'].docs-changed }}"
+
+      - name: Generate Release Notes
+        if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.outputs['release-notes-updating'].skip-check == 'false' && github.event.workflow_run.outputs['release-notes-updating'].docs-changed == 'true' }}
+        run: echo "Generating release notes..."
