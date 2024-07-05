@@ -24,17 +24,17 @@ jobs:
           echo "## Checking if skip-release-notes-verification label is present :passport_control:" >> $GITHUB_STEP_SUMMARY
           SKIP_CHECK=false
           if ${{ contains(github.event.pull_request.labels.*.name, 'skip-release-notes-verification') }}; then
-            echo "## skip-release-notes-verification label is present so the verification will be skipped :white_check_mark:" >> $GITHUB_STEP_SUMMARY;
-            SKIP_CHECK=true;
+            echo "## skip-release-notes-verification label is present so the verification will be skipped :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+            SKIP_CHECK=true
           fi
           echo "skip-check=$SKIP_CHECK" >> $GITHUB_OUTPUT
       - name: Check for updates in release notes directory
         id: docs-check
-        if: ${{ steps.skip-check.outputs.skip-check != ''true'' }}
+        if: ${{ steps.skip-check.outputs.skip-check != 'true' }}
         run: |
           DOCS_DIR=docs/modules/user-guide/pages/releases
 
-          if git diff --name-only origin/${{ github.base_ref }}...origin/${{github.head_ref }} | grep -q $DOCS_DIR; then
+          if git diff --name-only origin/${{ github.base_ref }}...origin/${{ github.head_ref }} | grep -q $DOCS_DIR; then
             echo "## Release notes are updated! :white_check_mark:" >> $GITHUB_STEP_SUMMARY
             echo "docs-changed=true" >> $GITHUB_OUTPUT
           else
