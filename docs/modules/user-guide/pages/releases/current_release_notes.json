@@ -21,13 +21,8 @@
                             "highlight_id": null
                         },
                         {
-                            "id": "11492",
-                            "title": "Another ticket to add",
-                            "highlight_id": null
-                        },
-                        {
-                            "id": "11493",
-                            "title": "Third ticket to add",
+                            "id": "11494",
+                            "title": "Create a cmdline tool to update release notes",
                             "highlight_id": null
                         }
                     ]
