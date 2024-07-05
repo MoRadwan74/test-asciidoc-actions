@@ -1,7 +1,7 @@
 on:
   workflow_run:
     workflows: [Check Release Notes Updating]
-	types: [completed]
+    types: [completed]
 
 jobs:
   on-success:
@@ -11,6 +11,6 @@ jobs:
       - run: echo 'The triggering workflow passed'
   on-failure:
     runs-on: ubuntu-latest
-	if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-	steps:
-	  - run: echo 'The triggering workflow failed'
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo 'The triggering workflow failed'
