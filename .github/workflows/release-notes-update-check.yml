@@ -45,6 +45,7 @@ jobs:
             echo "## Release notes are NOT updated! :x:" >> $GITHUB_STEP_SUMMARY
             echo "docs-changed=false" >> $GITHUB_OUTPUT
             exit 1
+          fi
 
       - name: Print Outputs for Debugging
         run: |
