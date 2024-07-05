@@ -1,0 +1,201 @@
+{
+    "cde_version": "2.6.0",
+    "overview": "In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to existing capabilities.",
+    "ga_milestone": "TBD",
+    "highlights": [
+        {
+            "id": "1",
+            "description": "Migrate from MCP to PlannerPlus for generating config scripts"
+        }
+    ],
+    "sections": [
+        {
+            "name": "Other Improvements",
+            "subsections": [
+                {
+                    "name": "CDE Product Documentation",
+                    "tickets": [
+                        {
+                            "id": "11491",
+                            "title": "Create a cmdline tool to update release notes",
+                            "highlight_id": null
+                        }
+                    ]
+                },
+                {
+                    "name": "CDE Audit Data",
+                    "tickets": [
+                        {
+                            "id": "11289",
+                            "title": "Create an endpoint for app usage pipeline",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11008",
+                            "title": "Improving CDE Auditing Page Performance",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11362",
+                            "title": "Additional Fields into Project Audit Page",
+                            "highlight_id": null
+                        }
+                    ]
+                },
+                {
+                    "name": "Data Input",
+                    "tickets": []
+                },
+                {
+                    "name": "Implement Workflow for Ciena Design Engine",
+                    "tickets": []
+                },
+                {
+                    "name": "REST API web Services",
+                    "tickets": [
+                        {
+                            "id": "11528",
+                            "title": "CDE_LIST Workflow  _Filer by customer who does not have workflows lead to failure",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11506",
+                            "title": "When creating local CDE users, there is no check for duplication",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11552",
+                            "title": "Edit project dialog confirm button does not work",
+                            "highlight_id": null
+                        }
+                    ]
+                },
+                {
+                    "name": "Add Access Controls to CDE",
+                    "tickets": []
+                },
+                {
+                    "name": "PlannerPlus Integration with CDE",
+                    "tickets": [
+                        {
+                            "id": "9851",
+                            "title": "Create C3 CloudFormation P2 template",
+                            "highlight_id": "1"
+                        },
+                        {
+                            "id": "11390",
+                            "title": "CDE Support for 6500-T Series platforms",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11223",
+                            "title": "Allow more interfaces in DeviceConfiguration (8 columns pre-populated in DCD, up to 16 allowed by profile)",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11315",
+                            "title": "Fix 666753-LG-Milan-Milan Signal Flow Incorrect",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11409",
+                            "title": "Fix P2 Workflow with SiteConfiguration - Site Renaming fails",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11554",
+                            "title": "Thin Terminal networks support in P2",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11591",
+                            "title": "Fix P2 workflow error PAD network",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11685",
+                            "title": "P2 EMEA - EuN - P-0385020 processing error",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11361",
+                            "title": "Update published Templates and CP with ESF",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11007",
+                            "title": "Migrate OnePlanner workflow from MCP to Planner Plus",
+                            "highlight_id": null
+                        }
+                    ]
+                },
+                {
+                    "name": "Customer-facing documents to be produced by CDE",
+                    "tickets": []
+                },
+                {
+                    "name": "CDE Client Module",
+                    "tickets": []
+                },
+                {
+                    "name": "CDE Template Engine",
+                    "tickets": [
+                        {
+                            "id": "11415",
+                            "title": "Fix a Template Workflow error when updating TID names",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11450",
+                            "title": "RLS OCH Workflow, removed Tx-Proxy commands when no local CCMD",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11451",
+                            "title": "FIELD ISSUE: RLS OCH Workflow taret-tx-power should not be included when ALIEN Mode is set to False",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11471",
+                            "title": "RLS OCH Workflow, added more descriptive error handling for common DCD mistakes",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11639",
+                            "title": "Support for wrapping scalar fields into dict under Generic Aggregators",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11330",
+                            "title": "A warning message should appear if there is rules without shelf number in template workflow",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11276",
+                            "title": "TE workflow: Pandoc command to create specific doc formats",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11671",
+                            "title": "Fix only first match of Primary sheet key with Aux sheet key is populated in the output FieldMappings",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11670",
+                            "title": "Add unit tests for all off-the-shelf CDE TE workflows",
+                            "highlight_id": null
+                        }
+                    ]
+                }
+            ],
+            "tickets": [
+                {
+                    "id": "11805",
+                    "title": "Fix Python Pandas installation issue with Github Pipeline",
+                    "highlight_id": null
+                }
+            ]
+        }
+    ],
+    "patches": []
+}

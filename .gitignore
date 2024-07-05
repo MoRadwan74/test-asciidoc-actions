@@ -1,0 +1,65 @@
+# ignore python virtualenv
+venv*
+
+# CDE logs directory
+log
+
+# CDE output directory
+/output
+
+# Python cache data
+__pycache__
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+
+# VS Code project
+.vscode
+.\#*
+venv-.git
+
+# Pycharm project
+.idea
+
+# CDE tmp directory
+tmp
+
+# 6500 sw directory
+templates/sw_6500_files
+
+# local data/storage
+data/*
+
+# CDE backup folder
+backup
+
+# CDE docs folders
+node_modules/
+build/
+
+# extracted ne_data_files
+ne_data_extract/
+
+# untrack app meta file
+src/ciena/cde/app_meta.json
+
+# untrack security ini file
+src/ciena/cde/conf/cde.sec_config.*.ini
+
+# untrack env spesific config ini files
+src/ciena/cde/conf/cde.app_config.*.ini
+!src/ciena/cde/conf/cde.app_config.dev.ini
+
+src/ciena/cde/conf/cde.ioc_config.*.ini
+!src/ciena/cde/conf/cde.ioc_config.dev.ini
+
+# ignore coverage reports
+.coverage
+
+# ignore monitoring db
+monitor.db
+
+# ignore unit test related files
+src/ciena/test/unit/output/
+src/ciena/test/output/
+unit_testing.db
