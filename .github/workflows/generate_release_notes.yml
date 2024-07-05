@@ -2,7 +2,7 @@ name: Generate AsciiDoc Release Notes
 
 on:
   workflow_run:
-    workflows: [Check Release Notes Updating]
+    workflows: ["Check Release Notes Updating"]
     types: [completed]
 
 env:
@@ -23,5 +23,5 @@ jobs:
       - name: Print values for debugging
         run: |
           echo "Workflow conclusion: ${{ github.event.workflow_run.conclusion }}"
-          echo "Skip check: ${{ github.event.workflow_run.outputs['release-notes-updating'].skip-check }}"
-          echo "Docs changed: ${{ github.event.workflow_run.outputs['release-notes-updating'].docs-changed }}"
+          echo "Skip check: ${{ github.event.workflow_run.outputs['release-notes-updating'].outputs.skip-check }}"
+          echo "Docs changed: ${{ github.event.workflow_run.outputs['release-notes-updating'].outputs.docs-changed }}"
