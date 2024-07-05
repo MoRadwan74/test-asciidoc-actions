@@ -1,7 +1,7 @@
 on:
   workflow_run:
     workflows: [Check Release Notes Updating]
-	types: [completed]
+	  types: [completed]
 
 jobs:
   on-success:
