@@ -1,5 +1,8 @@
 name: Release Notes Verification and AsciiDoc Generation
 
+permissions:
+  contents: write
+
 on:
   pull_request:
     types:
