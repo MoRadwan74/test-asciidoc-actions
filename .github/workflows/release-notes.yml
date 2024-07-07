@@ -1,0 +1,68 @@
+name: Release Notes Verification and AsciiDoc Generation
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - labeled
+      - unlabeled
+
+env:
+  RELEASE_NOTES_DIR: "docs/modules/user-guide/pages/releases"
+  GENERATED_RELEASE_NOTES_FILE_NAME: "release-*.adoc"
+
+jobs:
+  release-notes-updating:
+    name: Release Notes Updating
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine whether to skip the release notes check
+        run: |
+          echo "## Checking if skip-release-notes-verification label is present :passport_control:" >> $GITHUB_STEP_SUMMARY
+          if ${{ contains(github.event.pull_request.labels.*.name, 'skip-release-notes-verification') }}; then
+            echo "## Label 'skip-release-notes-verification' is found. Skipping action :no_entry:" >> $GITHUB_STEP_SUMMARY
+            exit 0
+          else
+            echo "Label 'skip-release-notes-verification' is not found. Proceeding with the action :rocket:"
+          fi
+
+      - name: Check for changes in the release notes
+        run: |
+          if git diff --name-only origin/${{ github.base_ref }}...origin/${{ github.head_ref }} | grep -q $RELEASE_NOTES_DIR; then
+            echo "## Release notes are updated! :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "## Release notes are NOT updated! :x:" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Generate AsciiDoc version
+        run: |
+          echo "## Start generating `$GENERATED_RELEASE_NOTES_FILE_NAME` :page_facing_up:" >> $GITHUB_STEP_SUMMARY
+          chmod +x generate_release_notes.py
+          ./generate_release_notes.py
+          echo "## `$GENERATED_RELEASE_NOTES_FILE_NAME` is generated successfully :white_check_mark: at :file_folder: $RELEASE_NOTES_DIR" >> $GITHUB_STEP_SUMMARY
+
+      - name: Configure Git & Commit changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "## Commit new generated `$GENERATED_RELEASE_NOTES_FILE_NAME` to branch: ${{ github.head_ref }}"
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git add ./docs/releases/release-*.adoc
+            git commit -m "Auto-generate release notes [skip ci]"
+            git push origin HEAD:${{ github.head_ref }}
+            echo "## $GENERATED_RELEASE_NOTES_FILE_NAME is pushed successfully to branch: ${{ github.head_ref }} :white_check_mark:"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
