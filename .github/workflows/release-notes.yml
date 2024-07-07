@@ -50,14 +50,6 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Configure Git
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          echo "## Fetching and rebasing changes"
-          git fetch origin
-          git rebase origin/${{ github.base_ref }}
-
       - name: Generate AsciiDoc version
         run: |
           echo "## Start generating `$GENERATED_RELEASE_NOTES_FILE_NAME` :page_facing_up:" >> $GITHUB_STEP_SUMMARY
@@ -67,11 +59,16 @@ jobs:
 
       - name: Commit changes to repository
         run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          echo "## Fetching and rebasing changes"
+          git fetch origin
+          git rebase origin/${{ github.base_ref }}
           if [[ -n $(git status --porcelain) ]]; then
             echo "## Commit new generated `$GENERATED_RELEASE_NOTES_FILE_NAME` to branch: ${{ github.head_ref }}"
             git add .
             git commit -m "Auto-generate release notes"
-            git push origin HEAD:${{ github.head_ref }}
+            git push origin HEAD:${{ github.head_ref }} --force
             echo "## $GENERATED_RELEASE_NOTES_FILE_NAME is pushed successfully to branch: ${{ github.head_ref }} :white_check_mark:"
           else
             echo "## No changes to commit"
