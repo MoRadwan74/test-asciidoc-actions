@@ -50,14 +50,7 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Generate AsciiDoc version
-        run: |
-          echo "## Start generating `$GENERATED_RELEASE_NOTES_FILE_NAME` :page_facing_up:" >> $GITHUB_STEP_SUMMARY
-          chmod +x generate_asciidoc_release_notes.py
-          ./generate_asciidoc_release_notes.py
-          echo "## `$GENERATED_RELEASE_NOTES_FILE_NAME` is generated successfully :white_check_mark: at :file_folder: $RELEASE_NOTES_DIR" >> $GITHUB_STEP_SUMMARY
-
-      - name: Configure Git & Commit changes
+      - name: Configure Git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -65,6 +58,15 @@ jobs:
           git fetch origin
           git rebase origin/${{ github.base_ref }}
 
+      - name: Generate AsciiDoc version
+        run: |
+          echo "## Start generating `$GENERATED_RELEASE_NOTES_FILE_NAME` :page_facing_up:" >> $GITHUB_STEP_SUMMARY
+          chmod +x generate_asciidoc_release_notes.py
+          ./generate_asciidoc_release_notes.py
+          echo "## `$GENERATED_RELEASE_NOTES_FILE_NAME` is generated successfully :white_check_mark: at :file_folder: $RELEASE_NOTES_DIR" >> $GITHUB_STEP_SUMMARY
+
+      - name: Commit changes to repository
+        run: |
           if [[ -n $(git status --porcelain) ]]; then
             echo "## Commit new generated `$GENERATED_RELEASE_NOTES_FILE_NAME` to branch: ${{ github.head_ref }}"
             git add .
