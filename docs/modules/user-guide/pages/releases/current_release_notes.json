@@ -198,6 +198,11 @@
                     "id": "11805",
                     "title": "Fix Python Pandas installation issue with Github Pipeline",
                     "highlight_id": null
+                },
+                {
+                    "id": "11806",
+                    "title": "New Fix Python Pandas installation issue with Github Pipeline",
+                    "highlight_id": null
                 }
             ]
         }
