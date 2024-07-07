@@ -65,6 +65,7 @@ jobs:
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
             git add .
             git commit -m "Auto-generate release notes"
+            git pull --rebase origin ${{ github.base_ref }}
             git push origin HEAD:${{ github.head_ref }}
             echo "## $GENERATED_RELEASE_NOTES_FILE_NAME is pushed successfully to branch: ${{ github.head_ref }} :white_check_mark:"
           fi
