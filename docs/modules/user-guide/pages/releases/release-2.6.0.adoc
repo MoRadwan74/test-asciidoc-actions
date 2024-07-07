@@ -1,0 +1,95 @@
+# CDE User Guide
+include::ROOT:partial$attributes.adoc[]
+
+[[cde-release-2-6-0]]
+== CDE-Release-2.6.0
+
+=== GA Milestone:
+
+TBD
+
+=== Release Overview:
+
+In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to existing capabilities.
+
+=== New Content Highlights:
+
+* Migrate from MCP to PlannerPlus for generating config scripts [Create C3 CloudFormation P2 template: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-9851[(RD-9851) Create C3 CloudFormation P2 template]].
+
+=== Other Improvements:
+
+==== CDE Product Documentation:
+
+* Create a cmdline tool to update release notes: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11491[(RD-11491) Create a cmdline tool to update release notes].
+
+* Second create a cmdline tool to update release notes: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11492[(RD-11492) Second create a cmdline tool to update release notes].
+
+==== CDE Audit Data:
+
+* Create an endpoint for app usage pipeline: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11289[(RD-11289) Create an endpoint for app usage pipeline].
+
+* Improving CDE Auditing Page Performance: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11008[(RD-11008) Improving CDE Auditing Page Performance].
+
+* Additional Fields into Project Audit Page: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11362[(RD-11362) Additional Fields into Project Audit Page].
+
+==== Data Input:
+
+==== Implement Workflow for Ciena Design Engine:
+
+==== REST API web Services:
+
+* CDE_LIST Workflow  _Filer by customer who does not have workflows lead to failure: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11528[(RD-11528) CDE_LIST Workflow  _Filer by customer who does not have workflows lead to failure].
+
+* When creating local CDE users, there is no check for duplication: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11506[(RD-11506) When creating local CDE users, there is no check for duplication].
+
+* Edit project dialog confirm button does not work: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11552[(RD-11552) Edit project dialog confirm button does not work].
+
+==== Add Access Controls to CDE:
+
+==== PlannerPlus Integration with CDE:
+
+* Create C3 CloudFormation P2 template: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-9851[(RD-9851) Create C3 CloudFormation P2 template].
+
+* CDE Support for 6500-T Series platforms: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11390[(RD-11390) CDE Support for 6500-T Series platforms].
+
+* Allow more interfaces in DeviceConfiguration (8 columns pre-populated in DCD, up to 16 allowed by profile): https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11223[(RD-11223) Allow more interfaces in DeviceConfiguration (8 columns pre-populated in DCD, up to 16 allowed by profile)].
+
+* Fix 666753-LG-Milan-Milan Signal Flow Incorrect: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11315[(RD-11315) Fix 666753-LG-Milan-Milan Signal Flow Incorrect].
+
+* Fix P2 Workflow with SiteConfiguration - Site Renaming fails: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11409[(RD-11409) Fix P2 Workflow with SiteConfiguration - Site Renaming fails].
+
+* Thin Terminal networks support in P2: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11554[(RD-11554) Thin Terminal networks support in P2].
+
+* Fix P2 workflow error PAD network: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11591[(RD-11591) Fix P2 workflow error PAD network].
+
+* P2 EMEA - EuN - P-0385020 processing error: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11685[(RD-11685) P2 EMEA - EuN - P-0385020 processing error].
+
+* Update published Templates and CP with ESF: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11361[(RD-11361) Update published Templates and CP with ESF].
+
+* Migrate OnePlanner workflow from MCP to Planner Plus: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11007[(RD-11007) Migrate OnePlanner workflow from MCP to Planner Plus].
+
+==== Customer-facing documents to be produced by CDE:
+
+==== CDE Client Module:
+
+==== CDE Template Engine:
+
+* Fix a Template Workflow error when updating TID names: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11415[(RD-11415) Fix a Template Workflow error when updating TID names].
+
+* RLS OCH Workflow, removed Tx-Proxy commands when no local CCMD: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11450[(RD-11450) RLS OCH Workflow, removed Tx-Proxy commands when no local CCMD].
+
+* FIELD ISSUE: RLS OCH Workflow taret-tx-power should not be included when ALIEN Mode is set to False: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11451[(RD-11451) FIELD ISSUE: RLS OCH Workflow taret-tx-power should not be included when ALIEN Mode is set to False].
+
+* RLS OCH Workflow, added more descriptive error handling for common DCD mistakes: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11471[(RD-11471) RLS OCH Workflow, added more descriptive error handling for common DCD mistakes].
+
+* Support for wrapping scalar fields into dict under Generic Aggregators: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11639[(RD-11639) Support for wrapping scalar fields into dict under Generic Aggregators].
+
+* A warning message should appear if there is rules without shelf number in template workflow: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11330[(RD-11330) A warning message should appear if there is rules without shelf number in template workflow].
+
+* TE workflow: Pandoc command to create specific doc formats: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11276[(RD-11276) TE workflow: Pandoc command to create specific doc formats].
+
+* Fix only first match of Primary sheet key with Aux sheet key is populated in the output FieldMappings: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11671[(RD-11671) Fix only first match of Primary sheet key with Aux sheet key is populated in the output FieldMappings].
+
+* Add unit tests for all off-the-shelf CDE TE workflows: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11670[(RD-11670) Add unit tests for all off-the-shelf CDE TE workflows].
+
+=== Child pages (hotfixes, MCP Patches, Regression Considerations & JIRAs closed, other relevant info):
