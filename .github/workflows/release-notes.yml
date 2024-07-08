@@ -49,13 +49,13 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Configure Git
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          echo "## Fetching and rebasing changes"
-          git fetch origin
-          git rebase origin/${{ github.base_ref }}
+      # - name: Configure Git
+      #   run: |
+      #     git config --global user.name 'github-actions[bot]'
+      #     git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      #     echo "## Fetching and rebasing changes"
+      #     git fetch origin
+      #     git rebase origin/${{ github.base_ref }}
 
       - name: Generate AsciiDoc version
         run: |
