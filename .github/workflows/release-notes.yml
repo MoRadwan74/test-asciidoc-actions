@@ -16,6 +16,8 @@ jobs:
   release-notes-updating:
     name: Release Notes Updating
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
@@ -47,6 +49,14 @@ jobs:
         with:
           python-version: "3.x"
 
+      # - name: Configure Git
+      #   run: |
+      #     git config --global user.name 'github-actions[bot]'
+      #     git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      #     echo "## Fetching and rebasing changes"
+      #     git fetch origin
+      #     git rebase origin/${{ github.base_ref }}
+
       - name: Generate AsciiDoc version
         run: |
           echo "## Start generating `$GENERATED_RELEASE_NOTES_FILE_NAME` :page_facing_up:" >> $GITHUB_STEP_SUMMARY
@@ -54,15 +64,27 @@ jobs:
           ./generate_asciidoc_release_notes.py
           echo "## `$GENERATED_RELEASE_NOTES_FILE_NAME` is generated successfully :white_check_mark: at :file_folder: $RELEASE_NOTES_DIR" >> $GITHUB_STEP_SUMMARY
 
-      - name: Configure Git & Commit changes
-        run: |
-          if [[ -n $(git status --porcelain) ]]; then
-            echo "## Commit new generated `$GENERATED_RELEASE_NOTES_FILE_NAME` to branch: ${{ github.head_ref }}"
-            git config --global user.name 'github-actions[bot]'
-            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-            git add ./docs/releases/release-*.adoc
-            git commit -m "Auto-generate release notes [skip ci]"
-            git push origin HEAD:${{ github.head_ref }}
-            echo "## $GENERATED_RELEASE_NOTES_FILE_NAME is pushed successfully to branch: ${{ github.head_ref }} :white_check_mark:"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Git Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v5.0.1
+        with:
+          commit_message: Auto-generate AsciiDoc release notes [skip ci]
+
+      # - name: Commit changes to repository
+      #   run: |
+      #     if [[ -n $(git status --porcelain) ]]; then
+      #       echo "## Commit new generated `$GENERATED_RELEASE_NOTES_FILE_NAME` to branch: ${{ github.head_ref }}"
+      #       git add .
+      #       git commit -m "Auto-generate release notes [skip ci]"
+      #     else
+      #       echo "## No changes to commit"
+      #       exit 0
+      #     fi
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Rebase and Push changes to repository
+      #   run: |
+      #     git push origin HEAD:${{ github.head_ref }} --force
+      #     echo "## $GENERATED_RELEASE_NOTES_FILE_NAME is pushed successfully to branch: ${{ github.head_ref }} :white_check_mark:"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
