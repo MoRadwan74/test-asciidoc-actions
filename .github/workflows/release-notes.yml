@@ -65,4 +65,5 @@ jobs:
         if: steps.check-label.outputs.skip == 'false'
         uses: stefanzweifel/git-auto-commit-action@v5.0.1
         with:
-          commit_message: Auto-generate AsciiDoc release notes [skip ci]
+          commit_message: Auto-generate AsciiDoc release notes
+          file_pattern: '*.adoc'
