@@ -56,10 +56,10 @@ jobs:
       - name: Generate AsciiDoc version
         if: steps.check-label.outputs.skip == 'false'
         run: |
-          echo "## Start generating `$GENERATED_RELEASE_NOTES_FILE_NAME` :page_facing_up:" >> $GITHUB_STEP_SUMMARY
+          echo "## Start generating $GENERATED_RELEASE_NOTES_FILE_NAME :page_facing_up:" >> $GITHUB_STEP_SUMMARY
           chmod +x generate_asciidoc_release_notes.py
           ./generate_asciidoc_release_notes.py
-          echo "## `$GENERATED_RELEASE_NOTES_FILE_NAME` is generated successfully :white_check_mark: at :file_folder: $RELEASE_NOTES_DIR" >> $GITHUB_STEP_SUMMARY
+          echo "## $GENERATED_RELEASE_NOTES_FILE_NAME is generated successfully :white_check_mark: at :file_folder: $RELEASE_NOTES_DIR" >> $GITHUB_STEP_SUMMARY
 
       - name: Git Auto Commit
         if: steps.check-label.outputs.skip == 'false'
