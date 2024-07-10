@@ -22,8 +22,6 @@ In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to
 
 * Create a cmdline tool to update release notes: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11491[(RD-11491) Create a cmdline tool to update release notes].
 
-* Add new create a cmdline tool to update release notes: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11494[(RD-11494) Add new create a cmdline tool to update release notes].
-
 ==== CDE Audit Data:
 
 * Create an endpoint for app usage pipeline: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11289[(RD-11289) Create an endpoint for app usage pipeline].
