@@ -134,7 +134,6 @@ def main():
             asciidoc_file_path = os.path.join(RELEASE_NOTES_DIR, f"release-{release_notes_data['cde_version']}.adoc")
             save_asciidoc(asciidoc_content, asciidoc_file_path)
             logger.info(f"AsciiDoc file is generated: '{get_filename_from_path(asciidoc_file_path)}' at releases directory.")
-            update_antora_structure(release_notes_data['cde_version'], f"release-{release_notes_data['cde_version']}.adoc")
         else:
             logger.error('Failed to load release notes data.')
     else:
