@@ -3,8 +3,9 @@
 import os
 import argparse
 from utils import logger, load_json, save_asciidoc, get_filename_from_path, convert_date, resolve_file_path
-from . import RELEASE_NOTES_JSON_DIR, RELEASE_NOTES_DIR
 
+RELEASE_NOTES_JSON_DIR = f'docs/modules/user-guide/pages/releases/json'
+RELEASE_NOTES_DIR = f'docs/modules/user-guide/pages/releases'
 CHILD_PAGES_MARKER = '=== Child pages (hotfixes, MCP Patches, Regression Considerations & JIRAs closed, other relevant info):'
 CLOUD_JIRA_URL = 'https://ciena-cloudjira-rd-it.atlassian.net/browse'
 
@@ -133,7 +134,6 @@ def main():
             asciidoc_file_path = os.path.join(RELEASE_NOTES_DIR, f"release-{release_notes_data['cde_version']}.adoc")
             save_asciidoc(asciidoc_content, asciidoc_file_path)
             logger.info(f"AsciiDoc file is generated: '{get_filename_from_path(asciidoc_file_path)}' at releases directory.")
-            update_antora_structure(release_notes_data['cde_version'], f"release-{release_notes_data['cde_version']}.adoc")
         else:
             logger.error('Failed to load release notes data.')
     else:
