@@ -9,7 +9,7 @@ on:
       - unlabeled
 
 env:
-  RELEASE_NOTES_JSON_DIR: "docs/modules/user-guide/pages/releases/JSON"
+  RELEASE_NOTES_JSON_DIR: "docs/modules/user-guide/pages/releases/json"
   RELEASE_NOTES_DIR: "docs/modules/user-guide/pages/releases"
 
 jobs:
