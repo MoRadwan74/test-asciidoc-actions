@@ -72,6 +72,7 @@ jobs:
       - name: Generate AsciiDoc version(s)
         if: steps.check-label.outputs.skip == 'false' && steps.check-changes.outputs.changes == 'true'
         run: |
+          source venv/bin/activate
           echo "## Start generating `$GENERATED_RELEASE_NOTES_FILE_NAME` :page_facing_up:" >> $GITHUB_STEP_SUMMARY
           chmod +x generate_asciidoc_release_notes.py
           for file in ${{ steps.check-changes.outputs.changed_files }}; do
