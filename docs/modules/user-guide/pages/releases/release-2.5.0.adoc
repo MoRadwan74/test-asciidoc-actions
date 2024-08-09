@@ -1,8 +1,8 @@
 # CDE User Guide
 include::ROOT:partial$attributes.adoc[]
 
-[[cde-release-2-6-0]]
-== CDE-Release-2.6.0
+[[cde-release-2-5-0]]
+== CDE-Release-2.5.0
 
 === GA Milestone:
 
@@ -10,7 +10,7 @@ TBD
 
 === Release Overview:
 
-In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to existing capabilities.
+In CDE-Release-2.5.0, CDE introduces new feature, additions, and improvements to existing capabilities.
 
 === New Content Highlights:
 
@@ -26,7 +26,7 @@ In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to
 
 ==== CDE Product Documentation:
 
-* Release 2.6.0 - Create a cmdline tool to update release notes: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11491[(RD-11491) Release 2.6.0 - Create a cmdline tool to update release notes].
+* Release 2.5.0 - Create a cmdline tool to update release notes: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11491[(RD-11491) Release 2.5.0 - Create a cmdline tool to update release notes].
 
 ==== CDE Audit Data:
 

@@ -1,6 +1,6 @@
 {
-    "cde_version": "2.6.0",
-    "overview": "In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to existing capabilities.",
+    "cde_version": "2.5.0",
+    "overview": "In CDE-Release-2.5.0, CDE introduces new feature, additions, and improvements to existing capabilities.",
     "release_date": "TBD",
     "sections": [
         {
@@ -20,7 +20,7 @@
                     "tickets": [
                         {
                             "id": "11491",
-                            "title": "Release 2.6.0 - Create a cmdline tool to update release notes",
+                            "title": "Release 2.5.0 - Create a cmdline tool to update release notes",
                             "highlight_id": null
                         }
                     ]

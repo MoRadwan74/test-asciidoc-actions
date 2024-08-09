@@ -41,13 +41,13 @@ jobs:
         if: steps.check-label.outputs.skip == 'false'
         id: check-changes
         run: |
-          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...origin/${{ github.head_ref }})
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...origin/${{ github.head_ref }} | grep $RELEASE_NOTES_JSON_DIR)
           echo "## Checking for changes in the release notes :mag:" >> $GITHUB_STEP_SUMMARY
-          if echo "$CHANGED_FILES" | grep -q $RELEASE_NOTES_JSON_DIR;
-          then
+          if [ -n "$CHANGED_FILES" ]; then
             echo "## Release notes are updated! :white_check_mark:" >> $GITHUB_STEP_SUMMARY
             echo "changes=true" >> $GITHUB_OUTPUT
-            CHANGED_FILES=$(echo "$CHANGED_FILES" | grep $RELEASE_NOTES_DIR)
+            # Convert newline separated file list to a space separated string
+            CHANGED_FILES=$(echo "$CHANGED_FILES" | tr '\n' ' ')
             echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
           else
             echo "## Release notes are NOT updated! :x:" >> $GITHUB_STEP_SUMMARY
