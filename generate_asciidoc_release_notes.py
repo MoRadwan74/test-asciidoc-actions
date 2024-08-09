@@ -3,8 +3,9 @@
 import os
 import argparse
 from utils import logger, load_json, save_asciidoc, get_filename_from_path, convert_date, resolve_file_path
-from . import RELEASE_NOTES_JSON_DIR, RELEASE_NOTES_DIR
 
+RELEASE_NOTES_JSON_DIR = f'docs/modules/user-guide/pages/releases/json'
+RELEASE_NOTES_DIR = f'docs/modules/user-guide/pages/releases'
 CHILD_PAGES_MARKER = '=== Child pages (hotfixes, MCP Patches, Regression Considerations & JIRAs closed, other relevant info):'
 CLOUD_JIRA_URL = 'https://ciena-cloudjira-rd-it.atlassian.net/browse'
 
