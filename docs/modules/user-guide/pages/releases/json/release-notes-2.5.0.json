@@ -20,12 +20,7 @@
                     "tickets": [
                         {
                             "id": "11491",
-                            "title": "Create a cmdline tool to update release notes",
-                            "highlight_id": null
-                        },
-                        {
-                            "id": "11492",
-                            "title": "New ticket - Create a cmdline tool to update release notes",
+                            "title": "Release 2.5.0 - Create a cmdline tool to update release notes",
                             "highlight_id": null
                         }
                     ]
