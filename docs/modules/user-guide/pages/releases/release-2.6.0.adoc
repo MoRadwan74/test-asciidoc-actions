@@ -18,11 +18,15 @@ In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to
 
 === Other Improvements:
 
+* Fix Python Pandas installation issue with Github Pipeline: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11805[(RD-11805) Fix Python Pandas installation issue with Github Pipeline].
+
+* Update backend python packages as recommended by dependabot: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11889[(RD-11889) Update backend python packages as recommended by dependabot].
+
+* Output slotting, fiber run list and rack elevation data in JSON format: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11663[(RD-11663) Output slotting, fiber run list and rack elevation data in JSON format].
+
 ==== CDE Product Documentation:
 
 * Create a cmdline tool to update release notes: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11491[(RD-11491) Create a cmdline tool to update release notes].
-
-* Add new create a cmdline tool to update release notes: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11494[(RD-11494) Add new create a cmdline tool to update release notes].
 
 ==== CDE Audit Data:
 
@@ -32,9 +36,13 @@ In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to
 
 * Additional Fields into Project Audit Page: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11362[(RD-11362) Additional Fields into Project Audit Page].
 
+* Fix filter projects audit page by all customers: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11873[(RD-11873) Fix filter projects audit page by all customers].
+
 ==== Data Input:
 
 ==== Implement Workflow for Ciena Design Engine:
+
+* Update NEData to 1.2.167: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11878[(RD-11878) Update NEData to 1.2.167].
 
 ==== REST API web Services:
 
@@ -43,6 +51,8 @@ In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to
 * When creating local CDE users, there is no check for duplication: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11506[(RD-11506) When creating local CDE users, there is no check for duplication].
 
 * Edit project dialog confirm button does not work: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11552[(RD-11552) Edit project dialog confirm button does not work].
+
+* Project Number should be enforced to be integer: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11911[(RD-11911) Project Number should be enforced to be integer].
 
 ==== Add Access Controls to CDE:
 
@@ -68,6 +78,12 @@ In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to
 
 * Migrate OnePlanner workflow from MCP to Planner Plus: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11007[(RD-11007) Migrate OnePlanner workflow from MCP to Planner Plus].
 
+* CDE fails to extract a tx_path for TM_EMEA - EuN - P-0385320: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11877[(RD-11877) CDE fails to extract a tx_path for TM_EMEA - EuN - P-0385320].
+
+* CDE workflow OSC PAD error: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11905[(RD-11905) CDE workflow OSC PAD error].
+
+* CDE workflow location_shelf error in CMCC 2Africe GERA network: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11910[(RD-11910) CDE workflow location_shelf error in CMCC 2Africe GERA network].
+
 ==== Customer-facing documents to be produced by CDE:
 
 ==== CDE Client Module:
@@ -92,4 +108,14 @@ In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to
 
 * Add unit tests for all off-the-shelf CDE TE workflows: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11670[(RD-11670) Add unit tests for all off-the-shelf CDE TE workflows].
 
+* Set Customer at runtime for Template workflows: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-10934[(RD-10934) Set Customer at runtime for Template workflows].
+
+* Resolved RLS OCH false error condition with multiple CCMD: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11816[(RD-11816) Resolved RLS OCH false error condition with multiple CCMD].
+
+* Add unit tests for RLS-OCH TE workflow: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11817[(RD-11817) Add unit tests for RLS-OCH TE workflow].
+
+* Fix Template Engine CLI schema checker issue: https://ciena-cloudjira-rd-it.atlassian.net/browse/RD-11879[(RD-11879) Fix Template Engine CLI schema checker issue].
+
 === Child pages (hotfixes, MCP Patches, Regression Considerations & JIRAs closed, other relevant info):
+
+***

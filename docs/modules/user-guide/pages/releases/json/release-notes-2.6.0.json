@@ -1,14 +1,17 @@
 {
     "cde_version": "2.6.0",
     "overview": "In CDE-Release-2.6.0, CDE introduces new feature, additions, and improvements to existing capabilities.",
-    "ga_milestone": "TBD",
-    "highlights": [
-        {
-            "id": "1",
-            "description": "Migrate from MCP to PlannerPlus for generating config scripts"
-        }
-    ],
+    "release_date": "TBD",
     "sections": [
+        {
+            "name": "New Content Highlights",
+            "highlights": [
+                {
+                    "id": "1",
+                    "title": "Migrate from MCP to PlannerPlus for generating config scripts"
+                }
+            ]
+        },
         {
             "name": "Other Improvements",
             "subsections": [
@@ -18,11 +21,6 @@
                         {
                             "id": "11491",
                             "title": "Create a cmdline tool to update release notes",
-                            "highlight_id": null
-                        },
-                        {
-                            "id": "11494",
-                            "title": "Add new create a cmdline tool to update release notes",
                             "highlight_id": null
                         }
                     ]
@@ -44,6 +42,11 @@
                             "id": "11362",
                             "title": "Additional Fields into Project Audit Page",
                             "highlight_id": null
+                        },
+                        {
+                            "id": "11873",
+                            "title": "Fix filter projects audit page by all customers",
+                            "highlight_id": null
                         }
                     ]
                 },
@@ -53,7 +56,13 @@
                 },
                 {
                     "name": "Implement Workflow for Ciena Design Engine",
-                    "tickets": []
+                    "tickets": [
+                        {
+                            "id": "11878",
+                            "title": "Update NEData to 1.2.167",
+                            "highlight_id": null
+                        }
+                    ]
                 },
                 {
                     "name": "REST API web Services",
@@ -71,6 +80,11 @@
                         {
                             "id": "11552",
                             "title": "Edit project dialog confirm button does not work",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11911",
+                            "title": "Project Number should be enforced to be integer",
                             "highlight_id": null
                         }
                     ]
@@ -131,6 +145,21 @@
                             "id": "11007",
                             "title": "Migrate OnePlanner workflow from MCP to Planner Plus",
                             "highlight_id": null
+                        },
+                        {
+                            "id": "11877",
+                            "title": "CDE fails to extract a tx_path for TM_EMEA - EuN - P-0385320",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11905",
+                            "title": "CDE workflow OSC PAD error",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11910",
+                            "title": "CDE workflow location_shelf error in CMCC 2Africe GERA network",
+                            "highlight_id": null
                         }
                     ]
                 },
@@ -189,6 +218,26 @@
                             "id": "11670",
                             "title": "Add unit tests for all off-the-shelf CDE TE workflows",
                             "highlight_id": null
+                        },
+                        {
+                            "id": "10934",
+                            "title": "Set Customer at runtime for Template workflows",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11816",
+                            "title": "Resolved RLS OCH false error condition with multiple CCMD",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11817",
+                            "title": "Add unit tests for RLS-OCH TE workflow",
+                            "highlight_id": null
+                        },
+                        {
+                            "id": "11879",
+                            "title": "Fix Template Engine CLI schema checker issue",
+                            "highlight_id": null
                         }
                     ]
                 }
@@ -197,6 +246,16 @@
                 {
                     "id": "11805",
                     "title": "Fix Python Pandas installation issue with Github Pipeline",
+                    "highlight_id": null
+                },
+                {
+                    "id": "11889",
+                    "title": "Update backend python packages as recommended by dependabot",
+                    "highlight_id": null
+                },
+                {
+                    "id": "11663",
+                    "title": "Output slotting, fiber run list and rack elevation data in JSON format",
                     "highlight_id": null
                 }
             ]

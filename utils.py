@@ -1,24 +1,23 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
 import os
 import logging
 import tempfile
 import subprocess
 import json
+from dateutil import parser
+import jsonschema.exceptions
+import re
+from packaging.version import Version, InvalidVersion
 
 
-def setup_logging():
-    """
-    Setup and configure logger with a basic configuration.
-
-    Returns:
-        Logger: Configured logger object.
-    """
-    logger = logging.getLogger('')
-    logger.setLevel(logging.DEBUG)
-    handler = logging.StreamHandler()
-    formatter = logging.Formatter('%(levelname)s - %(message)s')
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
-    return logger
+# Define module-level logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+handler = logging.StreamHandler()
+formatter = logging.Formatter('%(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 def confirm_action(prompt):
@@ -58,7 +57,7 @@ def launch_overview_editor(default_text, editor='vim'):
             tf.seek(0)
             return tf.read().strip()
     except Exception as e:
-        print(f'Error launching editor: {e}')
+        logger.error(f'Error launching editor: {e}')
         return default_text
 
 
@@ -75,9 +74,27 @@ def get_filename_from_path(path):
     try:
         return os.path.basename(path)
     except FileNotFoundError:
-        print(f'File is not found: {path}')
+        logger.error(f'File is not found: {path}')
     except IOError as e:
-        print(f'Failed to read file {path}: {e}')
+        logger.error(f'Failed to read file {path}: {e}')
+
+
+def resolve_file_path(release_version, release_notes_dir):
+    """
+    Searches for the given release_version for a filename within the release_notes_dir directory and returns the full path if found.
+
+    Args:
+        release_version (str): The release version of the file to search for.
+        release_notes_dir (str): The directory to search for the file.
+
+    Returns:
+        str or None: The full path to the file if found, otherwise None.
+    """
+    filename = f'release-notes-{release_version}.json'
+    full_path = os.path.join(release_notes_dir, filename)
+    if os.path.exists(full_path):
+        return full_path
+    return None
 
 
 def load_json(filepath):
@@ -94,11 +111,11 @@ def load_json(filepath):
         with open(filepath, 'r') as file:
             return json.load(file)
     except FileNotFoundError:
-        print(f'File is not found: "{filepath}"')
+        logger.error(f'File is not found: "{filepath}"')
     except json.JSONDecodeError:
-        print(f'Error decoding JSON from file "{filepath}".')
+        logger.error(f'Error decoding JSON from file "{filepath}".')
     except Exception as e:
-        print(f'Error loading JSON from file "{filepath}": {e}.')
+        logger.error(f'Error loading JSON from file "{filepath}": {e}.')
     return None
 
 
@@ -114,7 +131,45 @@ def save_json(data, filepath):
         with open(filepath, 'w') as file:
             json.dump(data, file, indent=4)
     except Exception as e:
-        print(f'Error saving JSON to file "{filepath}": {e}')
+        logger.error(f'Error saving JSON to file "{filepath}": {e}')
+
+
+def convert_date(input_date: str) -> str:
+    """
+    Convert a date string from the format '1st January 2024' to 'YYYYMMDD'.
+
+    Args:
+        input_date (str): The date string in the format '1st January 2024'.
+
+    Returns:
+        str: The date string in the format 'YYYYMMDD'.
+
+    Example:
+        >>> convert_date('1st January 2024')
+        '20240101'
+    """
+    parsed_date = parser.parse(input_date)
+    formatted_date = parsed_date.strftime('%Y%m%d')
+    return formatted_date
+
+
+def validate_json(data, schema):
+    """
+    Validate JSON data against a JSON Schema.
+
+    Args:
+        data (dict): The JSON data to validate.
+        schema (dict): The JSON Schema to validate against.
+
+    Returns:
+        bool: True if the JSON data is valid, False otherwise.
+    """
+    try:
+        jsonschema.validate(instance=data, schema=schema)
+        return True
+    except jsonschema.exceptions.ValidationError as e:
+        logger.error(f"JSON schema validation error: {e.message}")
+        return False
 
 
 def find_section(existing_sections, section_names):
@@ -158,12 +213,62 @@ def create_section_hierarchy(existing_sections, section_names, include_subsectio
         if section is None:
             section = {
                 "name": section_name,
-                "subsections": [] if len(section_names) > 1 or include_subsections else [],
                 "tickets": []
             }
+            if len(section_names) > 1 or include_subsections:
+                section['subsections'] = []
             current_level.append(section)
         current_level = section.get('subsections', [])
     return section
+
+
+def ticket_exists(sections, ticket_id):
+    """
+    Recursively check if a ticket with the given ID exists in the sections.
+
+    Args:
+        sections (list): List of sections to check.
+        ticket_id (str): The ID of the ticket to check for.
+
+    Returns:
+        bool: True if the ticket exists, False otherwise.
+    """
+    for section in sections:
+        if any(ticket['id'] == ticket_id for ticket in section.get('tickets', [])):
+            return True
+        if ticket_exists(section.get('subsections', []), ticket_id):
+            return True
+    return False
+
+
+def find_latest_release_notes_file(release_notes_dir):
+    """
+    Find the release notes file with the latest version.
+
+    Args:
+        release_notes_dir (str): Path to the release notes JSON directory.
+
+    Returns:
+        str: The file path to the release notes JSON file with the latest version.
+    """
+    version_pattern = re.compile(r'release-notes-(\d+\.\d+\.\d+)\.json')
+    latest_version = None
+    latest_file = None
+
+    for filename in os.listdir(release_notes_dir):
+        match = version_pattern.match(filename)
+        if match:
+            try:
+                version = Version(match.group(1))
+                if latest_version is None or version > latest_version:
+                    latest_version = version
+                    latest_file = filename
+            except InvalidVersion:
+                continue
+
+    if latest_file:
+        return os.path.join(release_notes_dir, latest_file)
+    return None
 
 
 def save_asciidoc(content, filename):
@@ -178,4 +283,4 @@ def save_asciidoc(content, filename):
         with open(filename, 'w') as file:
             file.write(content)
     except Exception as e:
-        print(f'Error saving AsciiDoc content to file "{filename}": {e}')
+        logger.error(f'Error saving AsciiDoc content to file "{filename}": {e}')

@@ -1,5 +1,6 @@
 # ignore python virtualenv
 venv*
+.venv*
 
 # CDE logs directory
 log
