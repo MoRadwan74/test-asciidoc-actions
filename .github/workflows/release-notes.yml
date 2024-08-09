@@ -44,7 +44,6 @@ jobs:
           CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...origin/${{ github.head_ref }} | grep $RELEASE_NOTES_JSON_DIR)
           echo "## Checking for changes in the release notes :mag:" >> $GITHUB_STEP_SUMMARY
           if [ -n "$CHANGED_FILES" ]; then
-          then
             echo "## Release notes are updated! :white_check_mark:" >> $GITHUB_STEP_SUMMARY
             echo "changes=true" >> $GITHUB_OUTPUT
             # Convert newline separated file list to a space separated string
